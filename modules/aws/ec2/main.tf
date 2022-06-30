@@ -1,9 +1,10 @@
 data "aws_ami" "amazon_linux" {
+    owners = ["amazon"]
     most_recent       = true
 
     filter {
         name          = "name"
-        values        = [ "amzn-ami-hvm-*-x86_64-gp2" ]
+        values        = [ "Amazon Linux 2" ]
     }
 
     filter {
@@ -23,10 +24,9 @@ resource "aws_instance" "dev_instance" {
     ami               = data.aws_ami.amazon_linux.id
 
     associate_public_ip_address = true
-    availability_zone = "${var.region}${local.availability_zone}"
-    subnet_id         = var.default_subnet_id["${var.region}${local.availability_zone}"]
+    subnet_id         = var.subnet_id
 
     tags = {
-        "Name"        = var.instance_name
+        "Name"        = var.ec2_name
     }
 }

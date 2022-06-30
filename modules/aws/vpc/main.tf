@@ -6,7 +6,7 @@ resource "aws_vpc" "main" {
     }
 }
 
-resource "aws_subnet" "main" {
+resource "aws_subnet" "subnets" {
     for_each = {
         "az1" = { "az_name": "${var.region}a", "cidr": "10.0.1.0/24" }
         "az2" = { "az_name": "${var.region}b", "cidr": "10.0.2.0/24" }
