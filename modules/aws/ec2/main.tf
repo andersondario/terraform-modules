@@ -15,7 +15,6 @@ data "aws_ami" "amazon_linux" {
 
 
 locals {
-    availability_zone = "a"
     instance_type     = "t2.micro"
 }
 
