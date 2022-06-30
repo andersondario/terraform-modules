@@ -5,6 +5,13 @@ terraform {
             version = "4.19.0"
         }
     }
+
+    backend "remote" {
+		organization = "andersondario"
+		workspaces {
+			name = "lab" 
+		}
+	}
 }
 
 provider "aws" {
