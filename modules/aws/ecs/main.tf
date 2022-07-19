@@ -115,7 +115,7 @@ resource "aws_ecs_task_definition" "dummy_app" {
 [
   {
       "name": "dummy-app",
-      "image": "dummy-app:latest",
+      "image": "167947257750.dkr.ecr.us-east-1.amazonaws.com/dummy-app",
       "memory": 256,
       "cpu": 256,
       "essential": true,
