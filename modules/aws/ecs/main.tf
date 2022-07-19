@@ -104,21 +104,22 @@ resource "aws_lb_listener" "dummy_app" {
 }
 
 resource "aws_ecs_task_definition" "dummy_app" {
-  family                   = "dummy-app-app"
+  family                   = "dummy-app"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = 1024
-  memory                   = 2048
+  cpu                      = 256
+  memory                   = 512
+  execution_role_arn      = "arn:aws:iam::167947257750:role/ecsTaskExecutionRole"
 
   container_definitions = <<DEFINITION
 [
   {
     "image": "167947257750.dkr.ecr.us-east-1.amazonaws.com/dummy-app:latest",
     "cpu": 256,
-    "memory": 512,
+    "memory": 256,
     "name": "dummy-app",
-    "networkMode": "awsvpc",
-    "executionRoleArn": "arn:aws:iam::167947257750:role/ecsTaskExecutionRole",
+    "network_mode": "awsvpc",
+    
     "portMappings": [
       {
         "containerPort": 80,
