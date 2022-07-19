@@ -154,26 +154,26 @@ resource "aws_ecs_cluster" "main" {
   name = var.cluster_name
 }
 
-resource "aws_ecs_service" "dummy_app" {
-  name            = "dummy-app-service"
-  cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.dummy_app.arn
-  desired_count   = var.app_count
-  launch_type     = "FARGATE"
+# resource "aws_ecs_service" "dummy_app" {
+#   name            = "dummy-app-service"
+#   cluster         = aws_ecs_cluster.main.id
+#   task_definition = aws_ecs_task_definition.dummy_app.arn
+#   desired_count   = var.app_count
+#   launch_type     = "FARGATE"
 
-  network_configuration {
-    security_groups = [aws_security_group.dummy_app_task.id]
-    subnets         = aws_subnet.private.*.id
-  }
+#   network_configuration {
+#     security_groups = [aws_security_group.dummy_app_task.id]
+#     subnets         = aws_subnet.private.*.id
+#   }
 
-  load_balancer {
-    target_group_arn = aws_lb_target_group.dummy_app.id
-    container_name   = "dummy-app"
-    container_port   = 80
-  }
+#   load_balancer {
+#     target_group_arn = aws_lb_target_group.dummy_app.id
+#     container_name   = "dummy-app"
+#     container_port   = 80
+#   }
 
-  depends_on = [aws_lb_listener.dummy_app]
-}
+#   depends_on = [aws_lb_listener.dummy_app]
+# }
 
 output "load_balancer_ip" {
   value = aws_lb.default.dns_name
