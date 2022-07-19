@@ -64,7 +64,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_security_group" "lb" {
-  name        = "${var.app_name}-alb-security-group"
+  name        = "${var.app_name}-${var.env_name}-alb-sg"
   vpc_id      = aws_vpc.default.id
 
   ingress {
@@ -89,7 +89,7 @@ resource "aws_lb" "default" {
 }
 
 resource "aws_lb_target_group" "app" {
-  name        = "${var.app_name}-${var.env_name}-target-group"
+  name        = "${var.app_name}-${var.env_name}-tg"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.default.id
