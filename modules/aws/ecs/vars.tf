@@ -9,3 +9,7 @@ variable "cluster_name" {
 variable "app_count" {
   type = number
 }
+
+variable "env_name" {
+  type = string
+}
