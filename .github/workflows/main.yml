@@ -27,7 +27,7 @@ jobs:
   infraPROD:
     name: Provisioning PROD infra
     runs-on: ubuntu-latest
-    needs: deployQA
+    needs: infraQA
     environment: production
     steps:
       - name: Checkout
