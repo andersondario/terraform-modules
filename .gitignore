@@ -1,3 +1,4 @@
 infra/*/.terraform/*
 .terraform.lock.hcl
 .terraformrc
+.terraform/*
