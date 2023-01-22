@@ -13,7 +13,6 @@ module "prometheus_ip" {
 
   ip_name     = "prometheus-ip"
   region      = "us-central1"
-  subnet_name = var.default_subnet_name
 }
 
 module "prometheus" {
