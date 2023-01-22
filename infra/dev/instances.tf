@@ -11,7 +11,8 @@ module "prometheus_ip" {
   project     = var.project_id
   environment = var.environment
 
-  ip_name = "prometheus-ip"
+  ip_name     = "prometheus-ip"
+  region      = "us-central1"
 }
 
 module "prometheus" {

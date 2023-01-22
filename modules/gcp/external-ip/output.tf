@@ -1,3 +1,3 @@
 output "static_ip" {
-  value = google_compute_global_address.static.address
+  value = google_compute_address.static.address
 }

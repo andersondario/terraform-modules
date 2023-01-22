@@ -1,6 +1,5 @@
-resource "google_compute_global_address" "static" {
+resource "google_compute_address" "static" {
   name         = var.ip_name
-  address_type = var.type
-  ip_version   = "IPV4"
-  project      = var.project
+  address_type = "EXTERNAL"
+  region       = var.region
 }

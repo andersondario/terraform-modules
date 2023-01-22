@@ -16,3 +16,7 @@ variable "type" {
   type    = string
   default = "EXTERNAL"
 }
+
+variable "region" {
+  type = string
+}
