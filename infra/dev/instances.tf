@@ -25,7 +25,7 @@ module "prometheus" {
   zone           = "us-central1-a"
   tags           = ["prometheus"]
   boot_disk_size = "20"
-  image          = data.hcp_packer_image.packer-prometheus-images.cloud_image_id
+  image          = "projects/aa-devops/global/images/${data.hcp_packer_image.packer-prometheus-images.cloud_image_id}"
   network_name   = var.default_vpc_name
   subnet_name    = var.default_subnet_name
   static_ip      = module.prometheus_ip.static_ip
