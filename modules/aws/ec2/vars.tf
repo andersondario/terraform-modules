@@ -1,11 +1,11 @@
 variable "region" {
-    type = string
+  type = string
 }
 
 variable "ec2_name" {
-    type = string
+  type = string
 }
 
 variable "subnet_id" {
-    type = string
+  type = string
 }

@@ -52,7 +52,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.default.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = element(aws_nat_gateway.gateway.*.id, count.index)
   }
 }
@@ -64,8 +64,8 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_security_group" "lb" {
-  name        = "${var.app_name}-${var.env_name}-alb-sg"
-  vpc_id      = aws_vpc.default.id
+  name   = "${var.app_name}-${var.env_name}-alb-sg"
+  vpc_id = aws_vpc.default.id
 
   ingress {
     protocol    = "tcp"
@@ -75,9 +75,9 @@ resource "aws_security_group" "lb" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -113,7 +113,7 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = 256
   memory                   = 512
-  execution_role_arn      = "arn:aws:iam::167947257750:role/ecsTaskExecutionRole"
+  execution_role_arn       = "arn:aws:iam::167947257750:role/ecsTaskExecutionRole"
 
   container_definitions = <<DEFINITION
 [
@@ -145,8 +145,8 @@ DEFINITION
 }
 
 resource "aws_security_group" "app_task" {
-  name        = "${var.app_name}-task-security-group"
-  vpc_id      = aws_vpc.default.id
+  name   = "${var.app_name}-task-security-group"
+  vpc_id = aws_vpc.default.id
 
   ingress {
     protocol        = "tcp"
