@@ -11,7 +11,9 @@ module "prometheus_ip" {
   project     = var.project_id
   environment = var.environment
 
-  ip_name = "prometheus-ip"
+  ip_name     = "prometheus-ip"
+  region      = "us-central1"
+  subnet_name = var.default_subnet_name
 }
 
 module "prometheus" {

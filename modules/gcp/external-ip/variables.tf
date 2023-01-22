@@ -16,3 +16,11 @@ variable "type" {
   type    = string
   default = "EXTERNAL"
 }
+
+variable "subnet_name" {
+  type = string
+}
+
+variable "region" {
+  type = string
+}
