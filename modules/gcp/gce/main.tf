@@ -18,7 +18,7 @@ resource "google_compute_instance" "default" {
   deletion_protection = var.deletion_protection
 
   labels = {
-    terraform = "True"
+    terraform = "true"
     isprod    = "${var.isprod_tag}"
   }
 
